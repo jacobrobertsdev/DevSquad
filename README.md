@@ -12,7 +12,7 @@ Example:
 
 ### What are possible names of the product?
 
-- **[Name option 1]**
+- **[Name option 1]** SpendSense
 - **[Name option 2]**
 - **[Name option 3]**
 
