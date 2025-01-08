@@ -20,11 +20,9 @@ Example:
 
 The potential customers and end users of **[Product Name]** are:
 
-- **Target Audience 1**: [Description of users, e.g., "small businesses, entrepreneurs, or freelancers who need a simple task management system."]
+- **Target Audience 1**:
 - **Target Audience 2**:
 - **Target Audience 3**:
-
-The buyers might be .....
 
 ### What are the potential features, functions, or other important details that would be appealing to customers, end users, or buyers?
 
