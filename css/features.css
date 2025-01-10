@@ -1,0 +1,30 @@
+.feature{
+    background-color: var(--lightGrayishBlue);
+
+    & .intro{
+        width: 55%;
+        margin-bottom: 3.75rem; /*60px*/
+    }
+    & .grid{
+        display: flex;
+    }
+    & .item{
+        flex: 1;
+        padding: 0.9375rem; /*15px*/
+    }
+    & .icon{ 
+        margin-bottom: 1.5rem;
+
+    }
+    & .title{
+        font-size: 1.5rem;
+        margin-bottom: 2.125rem;
+        color: var(--darkBlue);
+
+    }
+    & .description{
+        font-size: 1rem; /*16px*/
+        line-height: 0.875rem; /*14px*/
+        
+    }
+}
