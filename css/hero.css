@@ -3,20 +3,22 @@
     background-color: var(--veryLightGray);
     display: flex;
     align-items: center;
+    justify-content: center;
     background-image: url('../images/heroBackground.png');
     background-repeat: no-repeat;
-    min-height: 35rem;
+    background-position-y: center;
+    background-size: cover;
+    height: 33rem;
+
 
     /*hero is divided into image and text sections*/
     & .image {
         position: relative;
         background-image: url('../images/heroGraphic.png');
         background-color: transparent;
-        background-size: 70%;
-        background-repeat: no-repeat;
-        background-position: center center;
+        background-size: 63%;
+        background-position: bottom center;
         flex: 1;
-
     }
 
     & .text {
@@ -27,6 +29,7 @@
         p {
             color: var(--cream);
             width: 16rem;
+            margin-top: 2rem;
         }
 
     }
