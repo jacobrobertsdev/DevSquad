@@ -9,16 +9,16 @@
 ### What are possible names of the product?
 
 - **[Name option 1]** SpendSense
-- **[Name option 2]**
-- **[Name option 3]**
+- **[Name option 2]** budgbud
+- **[Name option 3]** BreadSheet
 
 ### Who are the potential customers, end users, or buyers?
 
 The potential end users of **[Product Name]** are:
 
-- **Target Audience 1**:
-- **Target Audience 2**:
-- **Target Audience 3**:
+- **Target Audience 1**: Everyday citizens seeking help balancing their budget.
+- **Target Audience 2**: Self employed entrepreneurs
+- **Target Audience 3**: Small businesses.
 
 ### What are the potential features, functions, or other important details that would be appealing to customers, end users, or buyers?
 
