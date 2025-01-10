@@ -1,64 +1,69 @@
-.header{
-    nav{
+.header {
+    nav {
         padding: 1.0625rem 1.5rem;
     }
 
-    & .links{ /*styles for the nav bar in the header */
-        a{
+    & .links {
+
+        /*styles for the nav bar in the header */
+        a {
             position: relative;
-           font-size: var(--font-sm);
-           color: var(--grayishBlue);
-           transition: color 300ms ease-in-out;
+            font-size: var(--font-sm);
+            color: var(--grayishBlue);
+            transition: color 300ms ease-in-out;
 
-           &:not(:last-child){
-            margin-right: 32px;
-           }
-
-           &::before{ /*creates a pseudo-element. in this case it is the underline on the nav menu*/
-            content: "";
-            display: block;
-            position: absolute;
-            height: 4px;
-            left:0;
-            right: 0;
-            bottom: -30px;
-            background: linear-gradient(to right,var(--lightPink), var(--peach));
-            opacity: 0;
-            transition: opacity 300ms ease-in-out;
-
-           }
-
-           &:hover{ 
-            color: var(--darkBlue);
-
-            &::before{
-                opacity: 1;
+            &:not(:last-child) {
+                margin-right: 32px;
             }
-           }
+
+            &::before {
+                /*creates a pseudo-element. in this case it is the underline on the nav menu*/
+                content: "";
+                display: block;
+                position: absolute;
+                height: 4px;
+                left: 0;
+                right: 0;
+                bottom: -30px;
+                /* background: linear-gradient(to right, var(--lightPink), var(--peach)); */
+                opacity: 0;
+                transition: opacity 300ms ease-in-out;
+
+            }
+
+            &:hover {
+                color: var(--darkBlue);
+
+                &::before {
+                    opacity: 1;
+                }
+            }
         }
     }
 
-    & .download{ /*style for the download button in the header */
+    & .download {
+        /*style for the download button in the header */
         font-size: var(--font-sm);
         color: var(--white);
         transition: opacity 300ms ease-in-out;
 
-        &:hover{
+        &:hover {
             opacity: 0.75;
         }
     }
 
-    
-} 
 
-.header .menu >span{ /*style for each span element in the menu */
+}
+
+.header .menu>span {
+    /*style for each span element in the menu */
     display: block;
     width: 26px;
     height: 2px;
     background-color: var(--darkBlue);
 
-    &:not(:last-child){
+    &:not(:last-child) {
         margin-bottom: 3px;
     }
-    
+
 }

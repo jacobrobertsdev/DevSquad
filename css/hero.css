@@ -1,36 +1,35 @@
-.hero{ /*class to style the hero portion of our landing page */
+.hero {
+    /*class to style the hero portion of our landing page */
     background-color: var(--veryLightGray);
-    display: flex; 
+    display: flex;
     align-items: center;
     background-image: url('../images/heroBackground.png');
     background-repeat: no-repeat;
     min-height: 35rem;
 
     /*hero is divided into image and text sections*/
-    & .image{ 
+    & .image {
         position: relative;
         background-image: url('../images/heroGraphic.png');
         background-color: transparent;
-        background-size: contain;
+        background-size: 80%;
         background-repeat: no-repeat;
         background-position: center center;
         flex: 1;
-        
+
     }
 
-    & .text{
+    & .text {
         text-align: center;
         flex: 1;
         flex-direction: column;
-        p{
 
+        p {
             color: var(--cream);
-            padding-top: 2rem;
-            padding-left: 14rem;
-            padding-right: 14rem;
+            width: 16rem;
         }
 
     }
 
-   
+
 }
