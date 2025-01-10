@@ -32,14 +32,11 @@
 
     & .title {
         font-size: 1.5rem;
-        margin-bottom: 2.125rem;
+        margin-bottom: .5rem;
         color: var(--darkBlue);
     }
 
     & .description {
-        font-size: 1rem;
-        /*16px*/
-        line-height: 0.875rem;
-        /*14px*/
+        text-align: center;
     }
 }
