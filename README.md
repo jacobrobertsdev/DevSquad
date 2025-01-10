@@ -26,7 +26,7 @@ Here are the key features and functions of BreadSheet that would appeal to poten
 
 - **Feature 1**: Fields for inputting a variety of monthly income and expenses with amounts, sources, etc.
 - **Feature 2**: A user-friendly interface and output of income/expenses/totals (charts/graphs?)
-- **Feature 3**: An button to quickly output and download the financial data as a PDF document
+- **Feature 3**: An option to quickly output/download the financial data as a PDF document
 
 ---
 
