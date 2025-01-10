@@ -1,6 +1,12 @@
 .header {
     nav {
         padding: 1.0625rem 1.5rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        z-index: 9999;
     }
 
     & .links {
