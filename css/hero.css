@@ -16,8 +16,9 @@
         position: relative;
         background-image: url('../images/heroGraphic.png');
         background-color: transparent;
-        background-size: 63%;
+        background-size: 60%;
         background-position: bottom center;
+        padding-right: 12rem;
         flex: 1;
     }
 
@@ -25,6 +26,7 @@
         text-align: center;
         flex: 1;
         flex-direction: column;
+        padding-left: 14rem;
 
         p {
             color: var(--cream);
