@@ -4,11 +4,7 @@
 
 ### What is the product?
 
-The **[Product Name]** is a [brief description of product]. It is designed to [solve a specific problem, meet a need, or improve an experience] by [describe the primary function or service it provides]. The product aims to be [mention any distinctive features or aspects, such as "user-friendly," "innovative," "cost-effective," etc.].
-
-Example:
-
-- "Product Name is a cloud-based task management app that helps teams organize their workflows and collaborate efficiently."
+**[Product Name]** is a web application for users to input and quickly analyze their budget, including income sources and expenses. It is designed as a utility that can be bookmarked in the user's browser and used efficiently, without the need to sign up for an account or go through a setup process. The product aims to be a simple, effective, and user-friendly solution for getting an at-a-glance overview of the user's finances.
 
 ### What are possible names of the product?
 
@@ -18,7 +14,7 @@ Example:
 
 ### Who are the potential customers, end users, or buyers?
 
-The potential customers and end users of **[Product Name]** are:
+The potential end users of **[Product Name]** are:
 
 - **Target Audience 1**:
 - **Target Audience 2**:
@@ -28,9 +24,9 @@ The potential customers and end users of **[Product Name]** are:
 
 Here are the key features and functions of **[Product Name]** that would appeal to potential customers and users:
 
-- **Feature 1**: [Describe the feature]
-- **Feature 2**:
-- **Feature 3**:
+- **Feature 1**: Fields for inputting a variety of monthly income and expenses with amounts, sources, etc.
+- **Feature 2**: A user-friendly interface and display of income/expenses/totals (charts/graphs?)
+- **Feature 3**: An option to quickly output and download the financial data as a PDF document
 
 ---
 
