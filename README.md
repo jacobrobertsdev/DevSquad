@@ -33,4 +33,4 @@ Here are the key features and functions of BreadSheet that would appeal to poten
 ## Product Vision Statement
 
 **Vision Statement:**
-For anyone who could benefit from a very quick and high-level overview of their finances, BreadSheet is a budgeting tool that allows quick input and output of financial information for the user's records. Unlike subscription services, products that require set up, or that save/sell/have control over your data with no interoperability, BreadSheet is fast, easy, and will store data temporarily and only if the user chooses.
+For anyone who could benefit from a simple and high-level overview of their finances, BreadSheet is a budgeting tool that allows quick input and output of financial information for the user's records. Unlike subscription services, products that require set up, or that save/sell/have control over your data with no interoperability, BreadSheet is fast, easy, and will store data temporarily and only if the user chooses.
