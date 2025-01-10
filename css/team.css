@@ -21,6 +21,7 @@
         place-self: center;
     }
     & .teamImage{
+        padding-top: 1.5rem;
         place-self: center;
         
     }
