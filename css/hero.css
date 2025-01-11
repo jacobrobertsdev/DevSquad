@@ -10,13 +10,12 @@
     background-size: cover;
     height: 33rem;
 
-
     /*hero is divided into image and text sections*/
     & .image {
         position: relative;
         background-image: url('../images/heroGraphic.png');
         background-color: transparent;
-        background-size: 60%;
+        background-size: 65%;
         background-position: bottom center;
         padding-right: 12rem;
         flex: 1;
@@ -24,14 +23,14 @@
 
     & .text {
         text-align: center;
-        flex: 1;
         flex-direction: column;
         padding-left: 14rem;
 
         p {
             color: var(--cream);
-            width: 16rem;
-            margin-top: 2rem;
+            width: 18rem;
+            padding-top: 2rem;
+            margin-top: 3rem;
         }
 
     }
