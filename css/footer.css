@@ -1,5 +1,6 @@
-.footer{
-    background: linear-gradient(to right,var(--lightPink), var(--peach));
-    padding: 2.5rem; /*40px*/
-    
+.footer {
+    background: linear-gradient(to right, var(--lightPink), var(--peach));
+    padding: 2rem;
+    /*40px*/
+    text-align: center;
 }
