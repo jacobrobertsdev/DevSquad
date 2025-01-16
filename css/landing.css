@@ -1,0 +1,317 @@
+/* -------------------------------------------- */
+/* ROOT STYLES */
+/* -------------------------------------------- */
+:root {
+    /*colors */
+    --darkBlue: hsl(233, 26%, 24%);
+    --cream: #fffdd0;
+    --grayishBlue: hsl(233, 8%, 62%);
+    --lightGrayishBlue: hsl(220, 16%, 96%);
+    --veryLightGray: hsl(0, 0%, 98%);
+    --white: hsl(0, 0%, 100%);
+    --lightPink: #ee6787;
+    --peach: #f6cc9e;
+    --lightBlue: #88c6dd;
+
+    /*font sizes*/
+    --font-sm: 0.875rem;
+    /*14px*/
+    --font-med: 1.125rem;
+    /*18px*/
+    --font-lrg: 1.25rem;
+    /*20px*/
+    --font-xl: 3.25rem;
+    /*52px*/
+}
+
+/* -------------------------------------------- */
+/* GLOBAL STYLES */
+/* -------------------------------------------- */
+html {
+    font-size: 100%;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Public Sans", serif;
+    font-size: var(--font-med);
+    font-weight: 300;
+    color: var(--grayishBlue);
+    line-height: 1.3;
+}
+
+h1 {
+    font-weight: 300;
+    color: var(--darkBlue);
+    font-size: var(--font-xl);
+    line-height: 1.15;
+    margin-top: 5rem;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-weight: 300;
+    color: var(--darkBlue);
+    font-size: 2.25rem;
+    /*36px*/
+    line-height: 1.15;
+    margin: 1rem;
+    text-align: center;
+    /*36px*/
+}
+
+h3 {
+    font-weight: 300;
+    color: var(--darkBlue);
+    font-size: 1.25rem;
+    /*20px*/
+    line-height: 1.15;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    /*24px*/
+}
+
+h4 {
+    font-weight: 300;
+    color: var(--white);
+    font-size: 0.9375rem;
+    /*15px*/
+    line-height: 1.15;
+    margin-top: 0.5rem;
+    /*24px*/
+}
+
+p {
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+a,
+a:visited,
+a:hover {
+    text-decoration: none;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex.jc-sb {
+    justify-content: space-between;
+}
+
+.flex.jc-c {
+    justify-content: center;
+}
+
+.flex.ai-c {
+    align-items: center;
+}
+
+.container-padding {
+    padding: 1rem 1.5rem;
+}
+
+button,
+.button {
+    padding: 0.875rem 2.1875rem;
+    background: linear-gradient(to right, var(--lightPink), var(--peach));
+    border: 0;
+    border-radius: 50px;
+    cursor: pointer;
+    color: var(--white);
+    font-weight: 400;
+}
+
+/* -------------------------------------------- */
+/* HEADER STYLES */
+/* -------------------------------------------- */
+
+.header {
+    nav {
+        padding: 0.9rem 1.5rem;
+        width: 100%;
+    }
+
+    & .links {
+        a {
+            position: relative;
+            font-size: var(--font-sm);
+            color: var(--grayishBlue);
+            transition: color 300ms ease-in-out;
+
+            &:not(:last-child) {
+                margin-right: 32px;
+            }
+
+            &:hover {
+                color: var(--darkBlue);
+
+                &::before {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    & .download {
+        /*style for the download button in the header */
+        font-size: var(--font-sm);
+        color: var(--white);
+        transition: opacity 300ms ease-in-out;
+
+        &:hover {
+            opacity: 0.75;
+        }
+    }
+}
+
+.header .menu>span {
+    /*style for each span element in the menu */
+    display: block;
+    width: 26px;
+    height: 2px;
+    background-color: var(--darkBlue);
+
+    &:not(:last-child) {
+        margin-bottom: 3px;
+    }
+}
+
+/* -------------------------------------------- */
+/* HERO STYLES */
+/* -------------------------------------------- */
+.hero {
+    /*class to style the hero portion of our landing page */
+    background-color: var(--veryLightGray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../images/heroBackground.png");
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-size: cover;
+    height: 33rem;
+
+    /*hero is divided into image and text sections*/
+    & .image {
+        position: relative;
+        background-image: url("../images/heroGraphic.png");
+        background-color: transparent;
+        background-size: 65%;
+        background-position: bottom center;
+        padding-right: 12rem;
+        flex: 1;
+    }
+
+    & .text {
+        text-align: center;
+        flex-direction: column;
+        padding-left: 14rem;
+
+        p {
+            color: var(--cream);
+            width: 18rem;
+            padding-top: 2rem;
+            margin-top: 3rem;
+        }
+    }
+}
+
+/* -------------------------------------------- */
+/* FEATURES STYLES */
+/* -------------------------------------------- */
+.feature {
+    background-color: var(--lightGrayishBlue);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    & .intro {
+        width: 90%;
+        margin-bottom: 1rem;
+        text-align: center;
+        /*60px*/
+    }
+
+    & .grid {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        /* Center items in the grid */
+        width: 100%;
+        /* Ensure grid takes full width */
+    }
+
+    & .item {
+        flex: 1;
+        padding: 0.9375rem;
+        /*15px*/
+    }
+
+    & .icon {
+        margin-bottom: 1.5rem;
+    }
+
+    & .title {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        color: var(--darkBlue);
+    }
+
+    & .description {
+        text-align: center;
+    }
+}
+
+/* -------------------------------------------- */
+/* TEAM STYLES */
+/* -------------------------------------------- */
+.team {
+    background-color: var(--veryLightGray);
+
+    & .teamGrid {
+        /*creates a grid template that will auto fit at a min of 230px and a max of 1fr */
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(14.375rem, 1fr));
+        gap: 3rem;
+        /*48px*/
+    }
+
+    & .teamItem {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--white);
+        border-radius: 0.3125rem;
+        /*5px*/
+        padding: 2rem;
+        overflow: scroll;
+        max-height: 25rem;
+        box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    & .name {
+        place-self: center;
+    }
+}
+
+/* -------------------------------------------- */
+/* FOOTER STYLES */
+/* -------------------------------------------- */
+.footer {
+    background: linear-gradient(to right, var(--lightPink), var(--peach));
+    padding: 2rem;
+    /*40px*/
+    text-align: center;
+}
