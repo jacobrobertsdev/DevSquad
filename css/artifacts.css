@@ -22,6 +22,11 @@ header {
 
 img {
     margin-bottom: 1rem;
+    align-self: center;
+}
+
+hr {
+    width: 100%;
 }
 
 main {
@@ -29,7 +34,15 @@ main {
     width: 65%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: center;
     gap: 1rem;
+}
 
+h2 {
+    margin-bottom: .6rem;
+}
+
+ul li:not(:first-child) {
+    margin-top: .8rem;
 }
