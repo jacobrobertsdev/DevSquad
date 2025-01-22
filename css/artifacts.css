@@ -37,5 +37,8 @@ main {
     align-items: flex-start;
     justify-content: center;
     gap: 1rem;
+}
 
+ul li:not(:first-child) {
+    margin-top: .8rem;
 }
