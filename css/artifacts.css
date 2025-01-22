@@ -39,6 +39,10 @@ main {
     gap: 1rem;
 }
 
+h2 {
+    margin-bottom: .6rem;
+}
+
 ul li:not(:first-child) {
     margin-top: .8rem;
 }
