@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Public Sans", serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+header {
+    width: 100%;
+    background: linear-gradient(to right, #ee6787 70%, #f6cc9e);
+    text-align: center;
+    padding: 1rem 0;
+    color: white;
+}
+
+img {
+    margin-bottom: 1rem;
+    align-self: center;
+}
+
+hr {
+    width: 100%;
+}
+
+main {
+    padding: 2rem;
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+}
+
+h2 {
+    margin-bottom: .6rem;
+}
+
+ul li:not(:first-child) {
+    margin-top: .8rem;
+}
