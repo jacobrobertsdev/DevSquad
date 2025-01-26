@@ -1,0 +1,23 @@
+# Node.js dependencies
+node_modules/
+
+# Log files
+*.log
+npm-debug.log*
+
+# Environment variables file
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Testing
+*.test.js
+*.spec.js
+
+# IDE / Editor specific files
+.vscode/
+
+# Temporary files
+*.swp
