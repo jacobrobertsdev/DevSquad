@@ -1,12 +1,12 @@
 // DOM Elements
-const addIncomeBtn = document.getElementById('add-income');
-const addExpenseBtn = document.getElementById('add-expense');
-const incomeSourceInput = document.getElementById('income-source');
-const incomeAmountInput = document.getElementById('income-amount');
-const expenseSourceInput = document.getElementById('expense-source');
-const expenseAmountInput = document.getElementById('expense-amount');
-const downloadBtn = document.getElementById('download');
-const chartCanvas = document.getElementById('budgetChart');
+const addIncomeBtn = document.querySelector('#add-income');
+const addExpenseBtn = document.querySelector('#add-expense');
+const incomeSourceInput = document.querySelector('#income-source');
+const incomeAmountInput = document.querySelector('#income-amount');
+const expenseSourceInput = document.querySelector('#expense-source');
+const expenseAmountInput = document.querySelector('#expense-amount');
+const downloadBtn = document.querySelector('#download');
+const chartCanvas = document.querySelector('#budgetChart');
 
 // Arrays to hold income and expense data
 let incomeData = JSON.parse(localStorage.getItem('incomeData')) || [];
