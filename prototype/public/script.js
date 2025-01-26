@@ -27,7 +27,7 @@ const placeholderExpenses = [
 // Flag to track if the user has entered their own data
 let hasUserEnteredData = incomeData.length > 0 || expenseData.length > 0;
 
-// Global chart variable
+// Chart variable
 let chart = null;
 
 // Initialize with data from localStorage or placeholder data
@@ -88,9 +88,9 @@ function updateTotals() {
     const totalExpenses = expenseData.reduce((total, item) => total + item.amount, 0);
     const netBalance = totalIncome - totalExpenses;
 
-    document.getElementById('total-income').textContent = `Total income: $${totalIncome.toFixed(2)}`;
-    document.getElementById('total-expenses').textContent = `Total expenses: $${totalExpenses.toFixed(2)}`;
-    document.getElementById('net-balance').textContent = `Net balance: $${netBalance.toFixed(2)}`;
+    document.querySelector('#total-income').textContent = `Total income: $${totalIncome.toFixed(2)}`;
+    document.querySelector('#total-expenses').textContent = `Total expenses: $${totalExpenses.toFixed(2)}`;
+    document.querySelector('#net-balance').textContent = `Net balance: $${netBalance.toFixed(2)}`;
 }
 
 // Handle income addition
