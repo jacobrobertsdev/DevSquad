@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Public Sans", serif;
+}
+
+/* Ensure body takes full viewport height */
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Header styling */
+header {
+    background: linear-gradient(to right, #ee6787 70%, #f6cc9e);
+    padding: 1rem 2rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+/* Main content section */
+main {
+    flex-grow: 1;
+    padding: 2rem;
+    overflow: auto;
+}
+
+/* Button styling */
+button {
+    padding: .6rem .9rem;
+    border-radius: 7px;
+    cursor: pointer;
+    border: none;
+    background-color: turquoise;
+    color: white;
+}
+
+button:hover {
+    background-color: rgb(32, 147, 135);
+}
+
+/* User inputs section */
+.user-inputs {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Heading styling inside user-inputs */
+.user-inputs h4 {
+    margin-bottom: .5rem;
+}
+
+/* Input fields section */
+.input-fields {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+}
+
+.input-fields>* {
+    width: 20rem;
+    padding: .3rem;
+}
+
+/* Output section (chart + totals) */
+.output {
+    margin-top: 2rem;
+    display: flex;
+    gap: 5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Styling for totals block */
+.totals {
+    width: 15rem;
+    display: flex;
+    flex-direction: column;
+    gap: .65rem;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: rgb(246, 254, 255);
+    padding: 1rem;
+    border-radius: 7px;
+    border: 2px solid #ee6787;
+    text-align: justify;
+}
+
+/* HR styling */
+hr {
+    width: 95%;
+}
+
+/* Chart styling */
+.chart {
+    width: 14rem;
+}
+
+/* Footer styling */
+footer {
+    background: linear-gradient(to right, #ee6787 70%, #f6cc9e);
+    padding: 1rem 2rem;
+    width: 100%;
+    color: white;
+    text-align: center;
+}

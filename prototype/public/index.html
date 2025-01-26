@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BreadSheet Prototype</title>
+    <link rel="stylesheet" href="./prototype.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100..900&display=swap" rel="stylesheet" />
+
+</head>
+
+<body>
+    <header>
+        <h1>BreadSheet Budget Tool</h1>
+        <button id="download">Download PDF</button>
+    </header>
+    <main>
+        <section class="user-inputs">
+            <div class="income">
+                <div class="income-header">
+                    <h4>Add income source:</h4>
+                </div>
+                <div class="input-fields">
+                    <input type="text" id="income-source" placeholder="Add an income source (I.E. Salary)" required>
+                    <input type="number" id="income-amount" placeholder="0.00" step="0.01" min="0" required>
+                    <button id="add-income">Add income</button>
+                </div>
+            </div>
+
+            <div class="expenses">
+                <div class="expenses-header">
+                    <h4>Add expenses:</h4>
+                </div>
+                <div class="input-fields">
+                    <input type="text" id="expense-source" placeholder="Add an expense (I.E. Rent)" required>
+                    <input type="number" id="expense-amount" placeholder="0.00" step="0.01" min="0" required>
+                    <button id="add-expense">Add expense</button>
+                </div>
+            </div>
+        </section>
+        <section class="output">
+            <!-- Chart.js canvas -->
+            <div class="chart">
+                <canvas id="budgetChart"></canvas>
+            </div>
+            <div class="totals">
+                <h4>Totals:</h4>
+                <hr>
+                <p id="total-income">Total income:</p>
+                <hr>
+                <p id="total-expenses">Total expenses:</p>
+                <hr>
+                <p id="net-balance">Net balance:</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>
+            &copy; DevSquad 2025
+        </p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>
