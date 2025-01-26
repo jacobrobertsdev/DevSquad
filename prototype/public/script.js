@@ -190,7 +190,7 @@ function generatePDF() {
     });
 
     // Save the PDF
-    doc.save('budget_report.pdf');
+    doc.save('BreadSheet_budget_report.pdf');
 }
 
 // Attach event listener to the download button
