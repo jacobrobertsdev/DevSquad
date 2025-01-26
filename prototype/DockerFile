@@ -2,7 +2,7 @@
 FROM node:18-alpine
 
 # Set the working directory inside the container
-WORKDIR /app
+WORKDIR /prototype
 
 # Copy package.json and package-lock.json (if available)
 COPY package*.json ./
@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 3000
 
 # Command to run your app (change if you're using something other than "start")
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
