@@ -1,5 +1,25 @@
 # DevSquad - CS400 Group Project
 
+## Instructions for running the app locally
+
+- Ensure you have Git installed on your machine
+- Ensure you have Docker installed on your machine
+- Clone this repository locally
+
+In your terminal, CD into the cloned repository and run the commands below to build the docker image and start running the containerized application on port 3000:
+
+```bash
+cd application
+```
+
+```bash
+docker build -t <name> .
+```
+
+```bash
+docker run -p 3000:3000 myapp
+```
+
 ## Part One: The Idea
 
 ### What is the product?
