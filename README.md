@@ -6,7 +6,7 @@
 - Ensure you have Docker installed on your machine
 - Clone this repository locally
 
-In your terminal, CD into the cloned repository and run the commands below to build the docker image and start running the containerized application on port 3000:
+In your terminal, CD into the cloned repository and run the commands below to build the docker image and start running the containerized application on port 3000 (replace \<name\> with any name you want):
 
 ```bash
 cd application
