@@ -17,7 +17,7 @@ docker build -t <name> .
 ```
 
 ```bash
-docker run -p 3000:3000 myapp
+docker run -it --init -p 3000:3000 <name>
 ```
 
 ## Part One: The Idea
