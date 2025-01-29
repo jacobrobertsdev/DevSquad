@@ -42,15 +42,10 @@ function saveDataToLocalStorage() {
     localStorage.setItem('expenseData', JSON.stringify(expenseData));
 }
 
-function calculateTotals(incomeData, expenseData) {
-    const totalIncome = incomeData.reduce((total, item) => total + item.amount, 0);
-    const totalExpenses = expenseData.reduce((total, item) => total + item.amount, 0);
-    return { totalIncome, totalExpenses }
-}
-
 // Chart.js: Update the pie chart based on current data
 function updateChart() {
-    const { totalIncome, totalExpenses } = calculateTotals(incomeData, expenseData);
+    const totalIncome = incomeData.reduce((total, item) => total + item.amount, 0);
+    const totalExpenses = expenseData.reduce((total, item) => total + item.amount, 0);
 
     const chartData = {
         labels: ['Income', 'Expenses'],
@@ -89,7 +84,8 @@ function updateChart() {
 
 // Update totals (income, expenses, net balance)
 function updateTotals() {
-    const { totalIncome, totalExpenses } = calculateTotals(incomeData, expenseData);
+    const totalIncome = incomeData.reduce((total, item) => total + item.amount, 0);
+    const totalExpenses = expenseData.reduce((total, item) => total + item.amount, 0);
     const netBalance = totalIncome - totalExpenses;
 
     document.querySelector('#total-income').textContent = `Total income: $${totalIncome.toFixed(2)}`;
