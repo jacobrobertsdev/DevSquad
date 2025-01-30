@@ -1,3 +1,29 @@
+/* -------------------------------------------- */
+/* ROOT STYLES */
+/* -------------------------------------------- */
+:root {
+    /*colors */
+    --darkBlue: hsl(233, 26%, 24%);
+    --cream: #fffdd0;
+    --grayishBlue: hsl(233, 8%, 62%);
+    --lightGrayishBlue: hsl(220, 16%, 96%);
+    --veryLightGray: hsl(0, 0%, 98%);
+    --white: hsl(0, 0%, 100%);
+    --lightPink: #ee6787;
+    --peach: #f6cc9e;
+    --lightBlue: #88c6dd;
+
+    /*font sizes*/
+    --font-sm: 0.875rem;
+    /*14px*/
+    --font-med: 1.125rem;
+    /*18px*/
+    --font-lrg: 1.25rem;
+    /*20px*/
+    --font-xl: 3.25rem;
+    /*52px*/
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -18,6 +44,29 @@ header {
     text-align: center;
     padding: 1rem 0;
     color: white;
+}
+.header{
+    a {
+        display: flex;
+        justify-content:left;
+        padding-left: 100px;
+        text-decoration:none;
+        font-size: var(--font-med);
+        color: var(--white);
+        transition: color 250ms ease-in-out;
+
+        &:not(:last-child) {
+            margin-right: 32px;
+        }
+
+        &:hover {
+            color: var(--cream);
+
+            &::before {
+                opacity: 1;
+            }
+        }
+    }
 }
 
 img {
