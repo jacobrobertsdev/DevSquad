@@ -6,6 +6,7 @@ const incomeAmountInput = document.querySelector('#income-amount');
 const expenseSourceInput = document.querySelector('#expense-source');
 const expenseAmountInput = document.querySelector('#expense-amount');
 const downloadBtn = document.querySelector('#download');
+const resetBtn = document.querySelector('#reset');
 const chartCanvas = document.querySelector('#budgetChart');
 
 // Arrays to hold income and expense data
@@ -40,6 +41,25 @@ if (!hasUserEnteredData) {
 function saveDataToLocalStorage() {
     localStorage.setItem('incomeData', JSON.stringify(incomeData));
     localStorage.setItem('expenseData', JSON.stringify(expenseData));
+}
+
+// Reset function
+function resetData() {
+    // Reset incomeData, expenseData, and localStorage
+    incomeData = [...placeholderIncome];
+    expenseData = [...placeholderExpenses];
+    localStorage.setItem('incomeData', JSON.stringify(incomeData));
+    localStorage.setItem('expenseData', JSON.stringify(expenseData));
+
+    // Reset form fields
+    incomeSourceInput.value = '';
+    incomeAmountInput.value = '';
+    expenseSourceInput.value = '';
+    expenseAmountInput.value = '';
+
+    // Update chart and totals
+    updateChart();
+    updateTotals();
 }
 
 // Chart.js: Update the pie chart based on current data
@@ -193,8 +213,11 @@ function generatePDF() {
     doc.save('BreadSheet_budget_report.pdf');
 }
 
-// Attach event listener to the download button
+// Handle download click
 downloadBtn.addEventListener('click', generatePDF);
+
+// Handle reset click
+resetBtn.addEventListener('click', resetData);
 
 // Initialize the page with data from localStorage or placeholder data
 updateChart();
