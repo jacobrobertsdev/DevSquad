@@ -96,6 +96,42 @@ button:hover {
     text-align: justify;
 }
 
+/* Styling for user input list */
+.list {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    gap: .65rem;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: rgb(246, 254, 255);
+    padding: 1rem;
+    border-radius: 7px;
+    border: 2px solid #ee6787;
+    text-align: justify;
+}
+.listColumns{
+    column-count: 2;
+    flex-wrap: wrap;
+    
+    & .leftColumn{
+        width: auto;
+        
+    }
+    & .rightColumn{
+        width: auto;
+        break-before: column;
+        
+        
+    }
+    li{
+        list-style: none;
+        width: min-content;
+    }
+}
+
+
+
 /* HR styling */
 hr {
     width: 95%;

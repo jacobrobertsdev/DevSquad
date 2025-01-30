@@ -60,6 +60,7 @@ function resetData() {
     // Update chart and totals
     updateChart();
     updateTotals();
+    resetList();
 }
 
 // Chart.js: Update the pie chart based on current data
@@ -126,11 +127,14 @@ addIncomeBtn.addEventListener('click', () => {
             hasUserEnteredData = true;
         }
 
+        
+
         incomeData.push({ source, amount });
         incomeSourceInput.value = '';
         incomeAmountInput.value = '';
         updateTotals();
         updateChart();
+        updateIncomeList();
 
         // Save the data to localStorage
         saveDataToLocalStorage();
@@ -152,14 +156,17 @@ addExpenseBtn.addEventListener('click', () => {
             hasUserEnteredData = true;
         }
 
+
         expenseData.push({ source, amount });
         expenseSourceInput.value = '';
         expenseAmountInput.value = '';
         updateTotals();
         updateChart();
+        updateExpenseList();
 
         // Save the data to localStorage
         saveDataToLocalStorage();
+        
     } else {
         alert('Please enter a valid expense source and amount.');
     }
@@ -212,6 +219,90 @@ function generatePDF() {
     // Save the PDF
     doc.save('BreadSheet_budget_report.pdf');
 }
+
+//updates the display for the list of income sources and expenses that the user has inputed.
+function updateExpenseList(){
+    const expensesList = document.getElementById("expensesList");
+    const placeholderText = document.getElementById("placeholderTextExpense");
+    if(placeholderText){
+        placeholderText.remove();
+    }
+
+
+    expenseData.forEach((expense, index) => {
+        const listItem = document.createElement("li");
+        listItem.id = "listItem"
+        listItem.textContent = `${expense.source}: $${expense.amount.toFixed(2)}`
+        expensesList.appendChild(listItem);
+
+
+
+        if(index !== expenseData.length -1){
+        const space = document.createElement("hr");
+        space.id = "space";
+        expensesList.appendChild(space);
+        }
+    
+    });
+
+}
+function updateIncomeList(){
+    const incomeSourceList = document.getElementById("incomeSourceList");
+    const placeholderText = document.getElementById("placeholderTextIncome");
+    placeholderText.remove();
+
+    incomeData.forEach((income,index) =>{
+        const listItem = document.createElement("li");
+        listItem.id = "listItem"
+        listItem.textContent = `${income.source}: $${income.amount.toFixed(2)}`
+        incomeSourceList.appendChild(listItem);
+
+        if(index !== incomeData.length -1){
+            const space = document.createElement("hr");
+            space.id = "space";
+            incomeSourceList.appendChild(space);
+            }
+    });
+}
+//rests the Income and Expense List
+function resetList(){
+    //removes all list items added
+    const elements = document.querySelectorAll('#listItem');
+    elements.forEach(element => element.remove());
+
+    //removes any placeholder text for income
+    const placeholderIncome = document.querySelectorAll('#placeholderTextIncome');
+    placeholderIncome.forEach(element => element.remove());
+
+    //removes any placeholder text for expenses
+    const placeholderExpense = document.querySelectorAll('#placeholderTextExpense');
+    placeholderExpense.forEach(element => element.remove());
+
+    //creates new placeholder text for income and appends
+    const incomeSourceList = document.getElementById("incomeSourceList");
+    const placeholderTextIncome = document.createElement("li");
+    placeholderTextIncome.id = "placeholderTextIncome";
+    placeholderTextIncome.textContent = "Add Data To Get Started";
+    incomeSourceList.appendChild(placeholderTextIncome);
+
+     //creates new placeholder text for expense and appends
+    const expenseList = document.getElementById("expensesList");
+    const placeholderTextExpense = document.createElement("li");
+    placeholderTextExpense.id = "placeholderTextExpense";
+    placeholderTextExpense.textContent = "Add Data To Get Started";
+    expenseList.appendChild(placeholderTextExpense);
+
+    //removes any hr elements in the list
+    const spaces = document.querySelectorAll('#space');
+    spaces.forEach(element => element.remove());
+
+}
+
+//initialize lists
+updateIncomeList();
+updateExpenseList();
+
+
 
 // Handle download click
 downloadBtn.addEventListener('click', generatePDF);
