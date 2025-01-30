@@ -135,9 +135,10 @@ addIncomeBtn.addEventListener('click', () => {
         updateTotals();
         updateChart();
         updateIncomeList();
-
+        
         // Save the data to localStorage
         saveDataToLocalStorage();
+       
     } else {
         alert('Please enter a valid income source and amount.');
     }
@@ -298,9 +299,6 @@ function resetList(){
 
 }
 
-//initialize lists
-updateIncomeList();
-updateExpenseList();
 
 
 
