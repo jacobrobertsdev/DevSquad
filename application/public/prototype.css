@@ -16,7 +16,6 @@ body {
 header {
     background: linear-gradient(to right, #ee6787 70%, #f6cc9e);
     padding: 1rem 2rem;
-    margin-bottom: 2rem;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -24,21 +23,39 @@ header {
     color: white;
 }
 
+.message {
+    margin: 1.2rem;
+    background-color: rgb(246, 254, 255);
+    padding: 0.6rem;
+    border-radius: 7px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    font-size: 0.9rem;
+}
+
 /* Main content section */
 main {
     flex-grow: 1;
-    padding: 2rem;
-    overflow: auto;
+    padding: 0 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Button styling */
 button {
-    padding: .6rem .9rem;
+    padding: 0.6rem 0.9rem;
     border-radius: 7px;
     cursor: pointer;
     border: none;
     background-color: turquoise;
     color: white;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 button:hover {
@@ -51,11 +68,12 @@ button:hover {
     gap: 2rem;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 /* Heading styling inside user-inputs */
 .user-inputs h4 {
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
 }
 
 /* Input fields section */
@@ -64,18 +82,19 @@ button:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: .5rem;
+    gap: 0.5rem;
 }
 
 .input-fields>* {
     width: 20rem;
-    padding: .3rem;
+    padding: 0.3rem;
 }
 
 /* Output section (chart + totals) */
 .output {
     margin-top: 2rem;
     display: flex;
+    flex-wrap: wrap;
     gap: 5rem;
     align-items: center;
     justify-content: center;
@@ -83,63 +102,65 @@ button:hover {
 
 /* Styling for totals block */
 .totals {
-    width: 15rem;
+    width: 20rem;
     display: flex;
     flex-direction: column;
-    gap: .65rem;
+    gap: 0.65rem;
     align-items: flex-start;
     justify-content: center;
     background-color: rgb(246, 254, 255);
     padding: 1rem;
     border-radius: 7px;
-    border: 2px solid #ee6787;
-    text-align: justify;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
-/* Styling for user input list */
-.list {
-    width: auto;
+.totals>p {
     display: flex;
-    flex-direction: column;
-    gap: .65rem;
-    align-items: flex-start;
-    justify-content: center;
-    background-color: rgb(246, 254, 255);
-    padding: 1rem;
-    border-radius: 7px;
-    border: 2px solid #ee6787;
-    text-align: justify;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 100%;
 }
-.listColumns{
-    column-count: 2;
+
+.lists {
+    display: flex;
     flex-wrap: wrap;
-    
-    & .leftColumn{
-        width: auto;
-        
-    }
-    & .rightColumn{
-        width: auto;
-        break-before: column;
-        
-        
-    }
-    li{
-        list-style: none;
-        width: min-content;
-    }
+    gap: 1rem;
+    margin-top: 2rem;
+    justify-content: center;
 }
 
+.lists ul {
+    width: 20rem;
+    height: 20rem;
+    overflow: scroll;
+    list-style-type: none;
+    background-color: rgb(246, 254, 255);
+    padding: 1.2rem;
+    border-radius: 7px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
 
+ul li {
+    margin-bottom: 0.5rem;
+    padding-right: 0.3rem;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+ul li:not(:last-child) {
+    border-bottom: 1px solid rgb(32, 32, 32);
+}
 
 /* HR styling */
 hr {
-    width: 95%;
+    width: 100%;
 }
 
 /* Chart styling */
 .chart {
-    width: 14rem;
+    width: 16rem;
 }
 
 /* Footer styling */
@@ -149,4 +170,8 @@ footer {
     width: 100%;
     color: white;
     text-align: center;
+}
+
+.hidden {
+    display: none;
 }

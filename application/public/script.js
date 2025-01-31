@@ -1,81 +1,128 @@
 // DOM Elements
-const addIncomeBtn = document.querySelector('#add-income');
-const addExpenseBtn = document.querySelector('#add-expense');
-const incomeSourceInput = document.querySelector('#income-source');
-const incomeAmountInput = document.querySelector('#income-amount');
-const expenseSourceInput = document.querySelector('#expense-source');
-const expenseAmountInput = document.querySelector('#expense-amount');
-const downloadBtn = document.querySelector('#download');
-const resetBtn = document.querySelector('#reset');
-const chartCanvas = document.querySelector('#budgetChart');
+const addIncomeBtn = document.querySelector("#add-income");
+const addExpenseBtn = document.querySelector("#add-expense");
+const incomeSourceInput = document.querySelector("#income-source");
+const incomeAmountInput = document.querySelector("#income-amount");
+const expenseSourceInput = document.querySelector("#expense-source");
+const expenseAmountInput = document.querySelector("#expense-amount");
+const downloadBtn = document.querySelector("#download");
+const resetBtn = document.querySelector("#reset");
+const chartCanvas = document.querySelector("#budgetChart");
+const incomeList = document.querySelector(".income-list");
+const expenseList = document.querySelector(".expense-list");
+const message = document.querySelector('.message');
 
 // Arrays to hold income and expense data
-let incomeData = JSON.parse(localStorage.getItem('incomeData')) || [];
-let expenseData = JSON.parse(localStorage.getItem('expenseData')) || [];
-
-// Initial state for the chart (placeholder data)
-const placeholderIncome = [
-    { source: "Salary", amount: 2500 },
-    { source: "Freelance", amount: 800 }
-];
-
-const placeholderExpenses = [
-    { source: "Rent", amount: 1000 },
-    { source: "Groceries", amount: 300 },
-    { source: "Utilities", amount: 150 }
-];
-
-// Flag to track if the user has entered their own data
-let hasUserEnteredData = incomeData.length > 0 || expenseData.length > 0;
+let incomeData = JSON.parse(localStorage.getItem("incomeData")) || [];
+let expenseData = JSON.parse(localStorage.getItem("expenseData")) || [];
 
 // Chart variable
 let chart = null;
 
-// Initialize with data from localStorage or placeholder data
-if (!hasUserEnteredData) {
-    incomeData = [...placeholderIncome];
-    expenseData = [...placeholderExpenses];
+// Initialize the chart with placeholder data
+function initializeChart() {
+    const placeholderIncome = 500;
+    const placeholderExpenses = 500;
+
+    const chartData = {
+        labels: ["Income", "Expenses"],
+        datasets: [
+            {
+                data: [placeholderIncome, placeholderExpenses],
+                backgroundColor: ["#40E0D0", "#FF8C6B"], // Peach and Turquoise
+                borderColor: ["#30B8B4", "#ee6787"], // Darker borders
+                borderWidth: 4,
+            },
+        ],
+    };
+
+    // Create the initial chart with placeholder data
+    chart = new Chart(chartCanvas, {
+        type: "pie",
+        data: chartData,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { position: "bottom" },
+                tooltip: {
+                    callbacks: {
+                        label: function (tooltipItem) {
+                            return tooltipItem.raw.toLocaleString("en-US", {
+                                style: "currency",
+                                currency: "USD",
+                            });
+                        },
+                    },
+                },
+            },
+        },
+    });
+}
+
+// Function to hide an element
+function hide(element) {
+    if (!element.classList.contains('hidden')) {
+        element.classList.add("hidden");
+    };
+}
+
+// Function to show an element
+function show(element) {
+    if (element.classList.contains('hidden')) {
+        element.classList.remove("hidden");
+    };
 }
 
 // Save data to localStorage
 function saveDataToLocalStorage() {
-    localStorage.setItem('incomeData', JSON.stringify(incomeData));
-    localStorage.setItem('expenseData', JSON.stringify(expenseData));
+    localStorage.setItem("incomeData", JSON.stringify(incomeData));
+    localStorage.setItem("expenseData", JSON.stringify(expenseData));
 }
 
 // Reset function
 function resetData() {
     // Reset incomeData, expenseData, and localStorage
-    incomeData = [...placeholderIncome];
-    expenseData = [...placeholderExpenses];
-    localStorage.setItem('incomeData', JSON.stringify(incomeData));
-    localStorage.setItem('expenseData', JSON.stringify(expenseData));
+    incomeData = [];
+    expenseData = [];
 
     // Reset form fields
-    incomeSourceInput.value = '';
-    incomeAmountInput.value = '';
-    expenseSourceInput.value = '';
-    expenseAmountInput.value = '';
+    incomeSourceInput.value = "";
+    incomeAmountInput.value = "";
+    expenseSourceInput.value = "";
+    expenseAmountInput.value = "";
 
     // Update chart and totals
-    updateChart();
+    if (chart) chart.destroy();
+    initializeChart();
     updateTotals();
-    resetList();
+    appendToList(incomeList, incomeData);
+    appendToList(expenseList, expenseData);
+    localStorage.removeItem('incomeData');
+    localStorage.removeItem('expenseData');
+    show(message);
 }
 
 // Chart.js: Update the pie chart based on current data
 function updateChart() {
-    const totalIncome = incomeData.reduce((total, item) => total + item.amount, 0);
-    const totalExpenses = expenseData.reduce((total, item) => total + item.amount, 0);
+    const totalIncome = incomeData.reduce(
+        (total, item) => total + item.amount,
+        0
+    );
+    const totalExpenses = expenseData.reduce(
+        (total, item) => total + item.amount,
+        0
+    );
 
     const chartData = {
-        labels: ['Income', 'Expenses'],
-        datasets: [{
-            data: [totalIncome, totalExpenses],
-            backgroundColor: ['#FF8C6B', '#40E0D0'], // Peach and Turquoise
-            borderColor: ['#ee6787', '#30B8B4'],   // Darker borders
-            borderWidth: 4
-        }]
+        labels: ["Income", "Expenses"],
+        datasets: [
+            {
+                data: [totalIncome, totalExpenses],
+                backgroundColor: ["#40E0D0", "#FF8C6B"], // Peach and Turquoise
+                borderColor: ["#30B8B4", "#ee6787"], // Darker borders
+                borderWidth: 4,
+            },
+        ],
     };
 
     // Destroy the existing chart before creating a new one
@@ -83,93 +130,127 @@ function updateChart() {
         chart.destroy();
     }
 
-    // Create new chart
+    // Create new chart with actual data
     chart = new Chart(chartCanvas, {
-        type: 'pie',
+        type: "pie",
         data: chartData,
         options: {
             responsive: true,
             plugins: {
-                legend: { position: 'bottom' },
+                legend: { position: "bottom" },
                 tooltip: {
                     callbacks: {
                         label: function (tooltipItem) {
-                            return tooltipItem.raw.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-                        }
-                    }
-                }
-            }
-        }
+                            return tooltipItem.raw.toLocaleString("en-US", {
+                                style: "currency",
+                                currency: "USD",
+                            });
+                        },
+                    },
+                },
+            },
+        },
     });
 }
 
 // Update totals (income, expenses, net balance)
 function updateTotals() {
-    const totalIncome = incomeData.reduce((total, item) => total + item.amount, 0);
-    const totalExpenses = expenseData.reduce((total, item) => total + item.amount, 0);
+    const totalIncome = incomeData.reduce(
+        (total, item) => (total += item.amount),
+        0
+    );
+    const totalExpenses = expenseData.reduce(
+        (total, item) => (total += item.amount),
+        0
+    );
     const netBalance = totalIncome - totalExpenses;
 
-    document.querySelector('#total-income').textContent = `Total income: $${totalIncome.toFixed(2)}`;
-    document.querySelector('#total-expenses').textContent = `Total expenses: $${totalExpenses.toFixed(2)}`;
-    document.querySelector('#net-balance').textContent = `Net balance: $${netBalance.toFixed(2)}`;
+    document.querySelector(".totals-income").textContent = totalIncome
+        ? `${totalIncome.toFixed(2)}`
+        : "0.00";
+    document.querySelector(".totals-expenses").textContent = totalExpenses
+        ? `${totalExpenses.toFixed(2)}`
+        : "0.00";
+    document.querySelector(".totals-net").textContent = netBalance
+        ? `${netBalance.toFixed(2)}`
+        : "0.00";
 }
 
+// List item creation for lists
+function appendToList(list, data) {
+    // Store the hardcoded elements (e.g., <li> and <hr>)
+    const placeholders = list.querySelectorAll(".placeholder");
+
+    // Clear the list (but keep the hardcoded items)
+    list.innerHTML = "";
+    placeholders.forEach((item) => list.appendChild(item));
+
+    data.forEach((item) => {
+        const listItem = document.createElement("li"); // Create a new <li> element
+        const sourceSpan = document.createElement("span");
+        const amtSpan = document.createElement("span");
+        sourceSpan.textContent = `${item.source}:`;
+        amtSpan.textContent = `$${item.amount}`;
+        listItem.appendChild(sourceSpan);
+        listItem.appendChild(amtSpan);
+        list.appendChild(listItem);
+    });
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+    // Check if incomeData and expenseData have data in localStorage
+    if (incomeData.length > 0 || expenseData.length > 0) {
+        // Hide the message if there's data
+        hide(message);
+    } else {
+        // Show the message if there is no data
+        show(message);
+    }
+
+    // Append the data to the list
+    appendToList(incomeList, incomeData);
+    appendToList(expenseList, expenseData);
+});
+
+
 // Handle income addition
-addIncomeBtn.addEventListener('click', () => {
+addIncomeBtn.addEventListener("click", () => {
+    hide(message);
     const source = incomeSourceInput.value.trim();
     const amount = parseFloat(incomeAmountInput.value);
 
     if (source && !isNaN(amount) && amount > 0) {
-        // Clear placeholder data if the user enters their own data
-        if (!hasUserEnteredData) {
-            incomeData = [];
-            expenseData = [];
-            hasUserEnteredData = true;
-        }
-
-        
-
         incomeData.push({ source, amount });
-        incomeSourceInput.value = '';
-        incomeAmountInput.value = '';
+        appendToList(incomeList, incomeData);
+        incomeSourceInput.value = "";
+        incomeAmountInput.value = "";
         updateTotals();
         updateChart();
-        updateIncomeList();
-        
+
         // Save the data to localStorage
         saveDataToLocalStorage();
-       
     } else {
-        alert('Please enter a valid income source and amount.');
+        alert("Please enter a valid income source and amount.");
     }
 });
 
 // Handle expense addition
-addExpenseBtn.addEventListener('click', () => {
+addExpenseBtn.addEventListener("click", () => {
+    hide(message);
     const source = expenseSourceInput.value.trim();
     const amount = parseFloat(expenseAmountInput.value);
 
     if (source && !isNaN(amount) && amount > 0) {
-        // Clear placeholder data if the user enters their own data
-        if (!hasUserEnteredData) {
-            incomeData = [];
-            expenseData = [];
-            hasUserEnteredData = true;
-        }
-
-
         expenseData.push({ source, amount });
-        expenseSourceInput.value = '';
-        expenseAmountInput.value = '';
+        appendToList(expenseList, expenseData);
+        expenseSourceInput.value = "";
+        expenseAmountInput.value = "";
         updateTotals();
         updateChart();
-        updateExpenseList();
-
         // Save the data to localStorage
         saveDataToLocalStorage();
-        
     } else {
-        alert('Please enter a valid expense source and amount.');
+        alert("Please enter a valid expense source and amount.");
     }
 });
 
@@ -179,17 +260,23 @@ function generatePDF() {
     const doc = new jsPDF();
 
     // Title of the document
-    doc.setFont('Helvetica', 'bold');
+    doc.setFont("Helvetica", "bold");
     doc.setFontSize(18);
-    doc.text('BreadSheet Budget Tool', 10, 10);
+    doc.text("BreadSheet Budget Tool", 10, 10);
 
     // Subtitle
     doc.setFontSize(14);
-    doc.text('Summary', 10, 20);
+    doc.text("Summary", 10, 20);
 
     // Add total income, expenses, and balance
-    const totalIncome = incomeData.reduce((total, item) => total + item.amount, 0);
-    const totalExpenses = expenseData.reduce((total, item) => total + item.amount, 0);
+    const totalIncome = incomeData.reduce(
+        (total, item) => total + item.amount,
+        0
+    );
+    const totalExpenses = expenseData.reduce(
+        (total, item) => total + item.amount,
+        0
+    );
     const netBalance = totalIncome - totalExpenses;
 
     doc.setFontSize(12);
@@ -198,9 +285,9 @@ function generatePDF() {
     doc.text(`Net Balance: $${netBalance.toFixed(2)}`, 10, 50);
 
     // Income sources list
-    doc.setFont('Helvetica', 'bold');
-    doc.text('Income Sources:', 10, 60);
-    doc.setFont('Helvetica', 'normal');
+    doc.setFont("Helvetica", "bold");
+    doc.text("Income Sources:", 10, 60);
+    doc.setFont("Helvetica", "normal");
     let yOffset = 70;
     incomeData.forEach((income) => {
         doc.text(`${income.source}: $${income.amount.toFixed(2)}`, 10, yOffset);
@@ -208,9 +295,9 @@ function generatePDF() {
     });
 
     // Expenses list
-    doc.setFont('Helvetica', 'bold');
-    doc.text('Expenses:', 10, yOffset + 10);
-    doc.setFont('Helvetica', 'normal');
+    doc.setFont("Helvetica", "bold");
+    doc.text("Expenses:", 10, yOffset + 10);
+    doc.setFont("Helvetica", "normal");
     yOffset += 20;
     expenseData.forEach((expense) => {
         doc.text(`${expense.source}: $${expense.amount.toFixed(2)}`, 10, yOffset);
@@ -218,96 +305,15 @@ function generatePDF() {
     });
 
     // Save the PDF
-    doc.save('BreadSheet_budget_report.pdf');
+    doc.save("BreadSheet_budget_report.pdf");
 }
-
-//updates the display for the list of income sources and expenses that the user has inputed.
-function updateExpenseList(){
-    const expensesList = document.getElementById("expensesList");
-    const placeholderText = document.getElementById("placeholderTextExpense");
-    if(placeholderText){
-        placeholderText.remove();
-    }
-
-
-    expenseData.forEach((expense, index) => {
-        const listItem = document.createElement("li");
-        listItem.id = "listItem"
-        listItem.textContent = `${expense.source}: $${expense.amount.toFixed(2)}`
-        expensesList.appendChild(listItem);
-
-
-
-        if(index !== expenseData.length -1){
-        const space = document.createElement("hr");
-        space.id = "space";
-        expensesList.appendChild(space);
-        }
-    
-    });
-
-}
-function updateIncomeList(){
-    const incomeSourceList = document.getElementById("incomeSourceList");
-    const placeholderText = document.getElementById("placeholderTextIncome");
-    placeholderText.remove();
-
-    incomeData.forEach((income,index) =>{
-        const listItem = document.createElement("li");
-        listItem.id = "listItem"
-        listItem.textContent = `${income.source}: $${income.amount.toFixed(2)}`
-        incomeSourceList.appendChild(listItem);
-
-        if(index !== incomeData.length -1){
-            const space = document.createElement("hr");
-            space.id = "space";
-            incomeSourceList.appendChild(space);
-            }
-    });
-}
-//rests the Income and Expense List
-function resetList(){
-    //removes all list items added
-    const elements = document.querySelectorAll('#listItem');
-    elements.forEach(element => element.remove());
-
-    //removes any placeholder text for income
-    const placeholderIncome = document.querySelectorAll('#placeholderTextIncome');
-    placeholderIncome.forEach(element => element.remove());
-
-    //removes any placeholder text for expenses
-    const placeholderExpense = document.querySelectorAll('#placeholderTextExpense');
-    placeholderExpense.forEach(element => element.remove());
-
-    //creates new placeholder text for income and appends
-    const incomeSourceList = document.getElementById("incomeSourceList");
-    const placeholderTextIncome = document.createElement("li");
-    placeholderTextIncome.id = "placeholderTextIncome";
-    placeholderTextIncome.textContent = "Add Data To Get Started";
-    incomeSourceList.appendChild(placeholderTextIncome);
-
-     //creates new placeholder text for expense and appends
-    const expenseList = document.getElementById("expensesList");
-    const placeholderTextExpense = document.createElement("li");
-    placeholderTextExpense.id = "placeholderTextExpense";
-    placeholderTextExpense.textContent = "Add Data To Get Started";
-    expenseList.appendChild(placeholderTextExpense);
-
-    //removes any hr elements in the list
-    const spaces = document.querySelectorAll('#space');
-    spaces.forEach(element => element.remove());
-
-}
-
-
-
 
 // Handle download click
-downloadBtn.addEventListener('click', generatePDF);
+downloadBtn.addEventListener("click", generatePDF);
 
 // Handle reset click
-resetBtn.addEventListener('click', resetData);
+resetBtn.addEventListener("click", resetData);
 
 // Initialize the page with data from localStorage or placeholder data
-updateChart();
+initializeChart();
 updateTotals();

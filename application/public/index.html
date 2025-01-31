@@ -14,7 +14,7 @@
 
 <body>
     <header>
-        <h1>BreadSheet Budget Tool</h1>
+        <h1>BreadSheet</h1>
         <div class="buttons">
             <button id="reset">Reset</button>
             <button id="download">Download PDF</button>
@@ -22,6 +22,7 @@
 
     </header>
     <main>
+        <p class="message">Add some data to begin creating your budget!</p>
         <section class="user-inputs">
             <div class="income">
                 <div class="income-header">
@@ -53,33 +54,22 @@
             <div class="totals">
                 <h4>Totals:</h4>
                 <hr>
-                <p id="total-income">Total income:</p>
+                <p id="total-income"><span>Total income:</span><span class="totals-income">0.00</span></p>
                 <hr>
-                <p id="total-expenses">Total expenses:</p>
+                <p id="total-expenses"><span>Total expenses:</span><span class="totals-expenses">0.00</span></p>
                 <hr>
-                <p id="net-balance">Net balance:</p>
-            </div>
-            <div class = "list">
-                <div class = listColumns>
-                    <div class = "leftColumn">
-                        <h4>Income Sources:</h4>
-                        <hr>
-                        <ul id = "incomeSourceList">
-                            <li id ="placeholderTextIncome">Add Data To Get Started</li>
-                        </ul>
-                    </div>
-                    <div class = "rightColumn">
-                        <h4 class = "newColumn">Expenses:</h4>
-                        <hr>
-                        <ul id = "expensesList">
-                            <li id ="placeholderTextExpense">Add Data To Get Started</li>
-                        </ul>
-                    </div>
-                </div>
-                
+                <p id="net-balance"><span>Net balance:</span><span class="totals-net">0.00</span></p>
             </div>
         </section>
-            
+        <section class="lists">
+            <ul class="income-list">
+                <li class="placeholder"><strong>Income:</strong></li>
+            </ul>
+            <ul class="expense-list">
+                <li class="placeholder"><strong>Expenses:</strong></li>
+            </ul>
+        </section>
+
     </main>
     <footer>
         <p>
